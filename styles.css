@@ -5,10 +5,15 @@
     box-sizing: border-box;
 }
 
-/* Importar fonte BigBlueTerm Nerd Font */
+/* Importar fonte BigBlueTerm Nerd Font - Versão Híbrida */
 @font-face {
     font-family: 'BigBlueTerm';
-    src: url('C:/Windows/Fonts/BigBlueTerm437NerdFont-Regular.ttf') format('truetype');
+    /* Primeiro tenta local (funciona no seu computador) */
+    src: local('BigBlueTerm437NerdFont-Regular'),
+         local('BigBlueTerm Nerd Font'),
+         /* Depois tenta web (funciona no GitHub Pages) */
+         url('https://cdn.jsdelivr.net/gh/ryanoasis/nerd-fonts@master/patched-fonts/BigBlueTerm/Regular/complete/BigBlueTerm%20Nerd%20Font%20Complete.ttf') format('truetype'),
+         url('https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/BigBlueTerm/Regular/complete/BigBlueTerm%20Nerd%20Font%20Complete.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -23,9 +28,9 @@ body {
 }
 
 body {
-    font-family: 'BigBlueTerm', 'JetBrains Mono', 'Courier New', monospace;
-    background: linear-gradient(135deg, #0a0a2e 0%, #16213e 50%, #0f3460 100%);
-    color: white;
+    font-family: 'BigBlueTerm', 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+    color: #ffffff;
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
@@ -40,11 +45,11 @@ body::before {
     width: 100%;
     height: 100%;
     background-image: 
-        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
-        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
-        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
-        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
-        radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.3), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.2), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.1), transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.25), transparent);
     background-repeat: repeat;
     background-size: 200px 100px;
     animation: stars 20s linear infinite;
@@ -75,15 +80,16 @@ body::before {
 .name {
     font-size: 3.5rem;
     font-weight: bold;
-    text-shadow: 0 0 20px rgba(255,255,255,0.5);
+    text-shadow: 0 0 20px rgba(255,255,255,0.8);
     margin-bottom: 20px;
     letter-spacing: 4px;
     animation: glow 2s ease-in-out infinite alternate;
+    color: #ffffff;
 }
 
 @keyframes glow {
-    from { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
-    to { text-shadow: 0 0 30px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.3); }
+    from { text-shadow: 0 0 20px rgba(255,255,255,0.8); }
+    to { text-shadow: 0 0 30px rgba(255,255,255,1), 0 0 40px rgba(255,255,255,0.6); }
 }
 
 .description {
@@ -101,11 +107,11 @@ body::before {
 }
 
 .tab-btn {
-    background: rgba(255,255,255,0.1);
-    border: 2px solid rgba(255,255,255,0.3);
-    color: white;
+    background: rgba(255,255,255,0.05);
+    border: 2px solid rgba(255,255,255,0.2);
+    color: #ffffff;
     padding: 15px 30px;
-    font-family: 'BigBlueTerm', 'JetBrains Mono', 'Courier New', monospace;
+    font-family: 'BigBlueTerm', 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -114,15 +120,16 @@ body::before {
 }
 
 .tab-btn:hover {
-    background: rgba(255,255,255,0.2);
-    border-color: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.5);
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .tab-btn.active {
-    background: rgba(255,255,255,0.3);
-    border-color: white;
-    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.15);
+    border-color: #ffffff;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
 }
 
 /* Conteúdo das abas */
@@ -157,11 +164,11 @@ body::before {
     align-items: center;
     gap: 15px;
     padding: 20px;
-    background: rgba(255,255,255,0.1);
-    border: 2px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.05);
+    border: 2px solid rgba(255,255,255,0.15);
     border-radius: 15px;
     text-decoration: none;
-    color: white;
+    color: #ffffff;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
     position: relative;
@@ -199,18 +206,26 @@ body::before {
     font-weight: bold;
 }
 
-/* Cores específicas para cada rede social */
+/* Cores específicas para cada rede social - Logos com suas cores originais */
 .social-link.steam { border-color: #00adee; }
-.social-link.steam:hover { background: rgba(0, 173, 238, 0.2); }
+.social-link.steam:hover { background: rgba(0, 173, 238, 0.1); border-color: #00adee; }
+.social-link.steam i { color: #00adee; }
 
 .social-link.instagram { border-color: #e4405f; }
-.social-link.instagram:hover { background: rgba(228, 64, 95, 0.2); }
+.social-link.instagram:hover { background: rgba(228, 64, 95, 0.1); border-color: #e4405f; }
+.social-link.instagram i { color: #e4405f; }
 
-.social-link.github { border-color: #333; }
-.social-link.github:hover { background: rgba(51, 51, 51, 0.2); }
+.social-link.github { border-color: #ffffff; }
+.social-link.github:hover { background: rgba(255, 255, 255, 0.1); border-color: #ffffff; }
+.social-link.github i { color: #ffffff; }
 
 .social-link.spotify { border-color: #1db954; }
-.social-link.spotify:hover { background: rgba(29, 185, 84, 0.2); }
+.social-link.spotify:hover { background: rgba(29, 185, 84, 0.1); border-color: #1db954; }
+.social-link.spotify i { color: #1db954; }
+
+.social-link.linkedin { border-color: #0077b5; }
+.social-link.linkedin:hover { background: rgba(0, 119, 181, 0.1); border-color: #0077b5; }
+.social-link.linkedin i { color: #0077b5; }
 
 /* Informações sobre os links */
 .links-info {
@@ -225,7 +240,7 @@ body::before {
 .links-info h3 {
     margin-bottom: 20px;
     font-size: 1.5rem;
-    color: #00adee;
+    color: #ffffff;
 }
 
 .links-info p {
@@ -267,7 +282,7 @@ body::before {
     margin-bottom: 30px;
     font-size: 1.8rem;
     text-align: center;
-    color: #00adee;
+    color: #ffffff;
 }
 
 /* Informações do currículo */
@@ -289,13 +304,13 @@ body::before {
 .cv-header h2 {
     font-size: 2.5rem;
     margin-bottom: 10px;
-    color: #00adee;
+    color: #ffffff;
 }
 
 .cv-title {
     font-size: 1.3rem;
     opacity: 0.9;
-    color: #1db954;
+    color: #ffffff;
 }
 
 .cv-section {
@@ -310,14 +325,19 @@ body::before {
 .cv-section h3 {
     font-size: 1.4rem;
     margin-bottom: 20px;
-    color: #00adee;
+    color: #ffffff;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
 .cv-section h3 i {
-    color: #1db954;
+    color: #ffffff;
+}
+
+/* Exceção para o ícone do LinkedIn no cabeçalho da seção */
+.cv-section h3 .fab.fa-linkedin {
+    color: #0077b5;
 }
 
 .cv-section p {
@@ -340,7 +360,7 @@ body::before {
     content: '▶';
     position: absolute;
     left: 0;
-    color: #1db954;
+    color: #ffffff;
 }
 
 /* Grid de habilidades */
@@ -352,8 +372,8 @@ body::before {
 }
 
 .skill-item {
-    background: rgba(0, 173, 238, 0.2);
-    border: 1px solid rgba(0, 173, 238, 0.4);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 12px;
     border-radius: 8px;
     text-align: center;
@@ -362,17 +382,17 @@ body::before {
 }
 
 .skill-item:hover {
-    background: rgba(0, 173, 238, 0.3);
+    background: rgba(255, 255, 255, 0.15);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 173, 238, 0.2);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 /* Seção do Spotify */
 .spotify-section {
-    background: rgba(29, 185, 84, 0.05);
+    background: rgba(255,255,255,0.05);
     padding: 30px;
     border-radius: 15px;
-    border: 1px solid rgba(29, 185, 84, 0.2);
+    border: 1px solid rgba(255,255,255,0.2);
     backdrop-filter: blur(10px);
     margin-top: 30px;
     text-align: center;
@@ -381,7 +401,7 @@ body::before {
 .spotify-section h3 {
     margin-bottom: 20px;
     font-size: 1.5rem;
-    color: #1db954;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -405,8 +425,8 @@ body::before {
 }
 
 .playlist-card {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(29, 185, 84, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
     padding: 20px;
     display: flex;
@@ -417,26 +437,53 @@ body::before {
 }
 
 .playlist-card:hover {
-    background: rgba(29, 185, 84, 0.1);
-    border-color: rgba(29, 185, 84, 0.6);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(29, 185, 84, 0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 .playlist-icon {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(45deg, #1db954, #1ed760);
-    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.playlist-icon.playlist-1 {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+}
+
+.playlist-icon.playlist-2 {
+    background: linear-gradient(135deg, #4834d4, #686de0);
+}
+
+.playlist-icon.playlist-3 {
+    background: linear-gradient(135deg, #00b894, #00cec9);
+}
+
+/* Estilos para capas de playlist reais */
+.playlist-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
 .playlist-icon i {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: white;
+    z-index: 2;
+    position: relative;
 }
 
 .playlist-info {
@@ -447,7 +494,7 @@ body::before {
 .playlist-info h4 {
     font-size: 1.1rem;
     margin-bottom: 8px;
-    color: #1db954;
+    color: #ffffff;
 }
 
 .playlist-info p {
@@ -464,20 +511,20 @@ body::before {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: linear-gradient(45deg, #1db954, #1ed760);
-    color: white;
+    background: linear-gradient(45deg, #ffffff, #e0e0e0);
+    color: #000000;
     text-decoration: none;
     padding: 15px 30px;
     border-radius: 25px;
     font-weight: bold;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(29, 185, 84, 0.3);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .spotify-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(29, 185, 84, 0.4);
-    background: linear-gradient(45deg, #1ed760, #1db954);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    background: linear-gradient(45deg, #e0e0e0, #ffffff);
 }
 
 .spotify-btn i {
@@ -496,9 +543,9 @@ body::before {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(29, 185, 84, 0.2);
-    border: 1px solid rgba(29, 185, 84, 0.4);
-    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
     text-decoration: none;
     padding: 12px 20px;
     border-radius: 8px;
@@ -506,17 +553,17 @@ body::before {
 }
 
 .cv-link:hover {
-    background: rgba(29, 185, 84, 0.3);
+    background: rgba(255, 255, 255, 0.15);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(29, 185, 84, 0.2);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 /* Seção do LinkedIn */
 .linkedin-section {
-    background: rgba(0, 119, 181, 0.05);
+    background: rgba(255, 255, 255, 0.05);
     padding: 30px;
     border-radius: 15px;
-    border: 1px solid rgba(0, 119, 181, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
 }
 
@@ -534,18 +581,18 @@ body::before {
 .linkedin-avatar {
     width: 80px;
     height: 80px;
-    background: linear-gradient(45deg, #0077b5, #00a0dc);
+    background: linear-gradient(45deg, #ffffff, #e0e0e0);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.3);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .linkedin-avatar i {
     font-size: 2.5rem;
-    color: white;
+    color: #0077b5;
 }
 
 .linkedin-details {
@@ -555,12 +602,12 @@ body::before {
 .linkedin-details h4 {
     font-size: 1.5rem;
     margin-bottom: 8px;
-    color: #0077b5;
+    color: #ffffff;
 }
 
 .linkedin-title {
     font-size: 1.1rem;
-    color: #1db954;
+    color: #ffffff;
     margin-bottom: 8px;
     font-weight: bold;
 }
@@ -585,7 +632,7 @@ body::before {
 }
 
 .stat-item i {
-    color: #0077b5;
+    color: #ffffff;
 }
 
 .linkedin-actions {
@@ -610,26 +657,26 @@ body::before {
 }
 
 .linkedin-btn.primary {
-    background: linear-gradient(45deg, #0077b5, #00a0dc);
-    color: white;
-    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.3);
+    background: linear-gradient(45deg, #ffffff, #e0e0e0);
+    color: #000000;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .linkedin-btn.primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 119, 181, 0.4);
-    background: linear-gradient(45deg, #00a0dc, #0077b5);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    background: linear-gradient(45deg, #e0e0e0, #ffffff);
 }
 
 .linkedin-btn.secondary {
-    background: rgba(255, 255, 255, 0.1);
-    color: #0077b5;
-    border: 2px solid rgba(0, 119, 181, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .linkedin-btn.secondary:hover {
-    background: rgba(0, 119, 181, 0.1);
-    border-color: rgba(0, 119, 181, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
     transform: translateY(-2px);
 }
 

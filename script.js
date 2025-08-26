@@ -140,7 +140,7 @@ notificationStyles.textContent = `
     
     .notification-message {
         flex: 1;
-        font-family: 'BigBlueTerm', 'JetBrains Mono', 'Courier New', monospace;
+        font-family: 'BigBlueTerm', 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
     }
 `;
 
@@ -193,9 +193,9 @@ function createParticles() {
             position: absolute;
             width: 2px;
             height: 2px;
-            background: white;
+            background: rgba(255, 255, 255, 0.6);
             border-radius: 50%;
-            opacity: ${Math.random() * 0.5 + 0.2};
+            opacity: ${Math.random() * 0.3 + 0.1};
             animation: float ${Math.random() * 10 + 10}s linear infinite;
             left: ${Math.random() * 100}%;
             top: ${Math.random() * 100}%;
