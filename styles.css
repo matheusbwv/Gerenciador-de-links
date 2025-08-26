@@ -1,0 +1,730 @@
+/* Reset e configurações básicas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Importar fonte BigBlueTerm Nerd Font */
+@font-face {
+    font-family: 'BigBlueTerm';
+    src: url('C:/Windows/Fonts/BigBlueTerm437NerdFont-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Melhorar legibilidade com a nova fonte */
+body {
+    font-feature-settings: 'liga' 1, 'calt' 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: 'BigBlueTerm', 'JetBrains Mono', 'Courier New', monospace;
+    background: linear-gradient(135deg, #0a0a2e 0%, #16213e 50%, #0f3460 100%);
+    color: white;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Estrelas de fundo */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: stars 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes stars {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-100px); }
+}
+
+/* Container principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 40px 0;
+}
+
+.name {
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+    letter-spacing: 4px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+    to { text-shadow: 0 0 30px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.3); }
+}
+
+.description {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    letter-spacing: 2px;
+}
+
+/* Navegação por abas */
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    gap: 10px;
+}
+
+.tab-btn {
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 15px 30px;
+    font-family: 'BigBlueTerm', 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.tab-btn:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.6);
+    transform: translateY(-2px);
+}
+
+.tab-btn.active {
+    background: rgba(255,255,255,0.3);
+    border-color: white;
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+/* Conteúdo das abas */
+.tab-content {
+    min-height: 500px;
+}
+
+.tab-pane {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Links sociais */
+.social-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 15px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.social-link:hover::before {
+    left: 100%;
+}
+
+.social-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.social-link i {
+    font-size: 2rem;
+    width: 50px;
+    text-align: center;
+}
+
+.social-link span {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Cores específicas para cada rede social */
+.social-link.steam { border-color: #00adee; }
+.social-link.steam:hover { background: rgba(0, 173, 238, 0.2); }
+
+.social-link.instagram { border-color: #e4405f; }
+.social-link.instagram:hover { background: rgba(228, 64, 95, 0.2); }
+
+.social-link.github { border-color: #333; }
+.social-link.github:hover { background: rgba(51, 51, 51, 0.2); }
+
+.social-link.spotify { border-color: #1db954; }
+.social-link.spotify:hover { background: rgba(29, 185, 84, 0.2); }
+
+/* Informações sobre os links */
+.links-info {
+    background: rgba(255,255,255,0.05);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+.links-info h3 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #00adee;
+}
+
+.links-info p {
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.link-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.link-item {
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+.link-item:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-2px);
+}
+
+.link-item strong {
+    color: #00adee;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Seção de currículo */
+.curriculum-section {
+    text-align: left;
+}
+
+.curriculum-section h3 {
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    text-align: center;
+    color: #00adee;
+}
+
+/* Informações do currículo */
+.cv-info {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cv-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+}
+
+.cv-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #00adee;
+}
+
+.cv-title {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    color: #1db954;
+}
+
+.cv-section {
+    background: rgba(255,255,255,0.05);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    margin-bottom: 25px;
+}
+
+.cv-section h3 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: #00adee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cv-section h3 i {
+    color: #1db954;
+}
+
+.cv-section p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.cv-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.cv-section li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.cv-section li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: #1db954;
+}
+
+/* Grid de habilidades */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.skill-item {
+    background: rgba(0, 173, 238, 0.2);
+    border: 1px solid rgba(0, 173, 238, 0.4);
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+    background: rgba(0, 173, 238, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 173, 238, 0.2);
+}
+
+/* Seção do Spotify */
+.spotify-section {
+    background: rgba(29, 185, 84, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(29, 185, 84, 0.2);
+    backdrop-filter: blur(10px);
+    margin-top: 30px;
+    text-align: center;
+}
+
+.spotify-section h3 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #1db954;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.spotify-section h3 i {
+    color: #1db954;
+}
+
+.spotify-section p {
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.playlists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.playlist-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(29, 185, 84, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.playlist-card:hover {
+    background: rgba(29, 185, 84, 0.1);
+    border-color: rgba(29, 185, 84, 0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(29, 185, 84, 0.2);
+}
+
+.playlist-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #1db954, #1ed760);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.playlist-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.playlist-info {
+    flex: 1;
+    text-align: left;
+}
+
+.playlist-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #1db954;
+}
+
+.playlist-info p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.spotify-cta {
+    margin-top: 20px;
+}
+
+.spotify-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(45deg, #1db954, #1ed760);
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(29, 185, 84, 0.3);
+}
+
+.spotify-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(29, 185, 84, 0.4);
+    background: linear-gradient(45deg, #1ed760, #1db954);
+}
+
+.spotify-btn i {
+    font-size: 1.2rem;
+}
+
+/* Links do currículo */
+.cv-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.cv-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(29, 185, 84, 0.2);
+    border: 1px solid rgba(29, 185, 84, 0.4);
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.cv-link:hover {
+    background: rgba(29, 185, 84, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(29, 185, 84, 0.2);
+}
+
+/* Seção do LinkedIn */
+.linkedin-section {
+    background: rgba(0, 119, 181, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 119, 181, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.linkedin-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 119, 181, 0.3);
+}
+
+.linkedin-avatar {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, #0077b5, #00a0dc);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.3);
+}
+
+.linkedin-avatar i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.linkedin-details {
+    flex: 1;
+}
+
+.linkedin-details h4 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: #0077b5;
+}
+
+.linkedin-title {
+    font-size: 1.1rem;
+    color: #1db954;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.linkedin-location {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 15px;
+}
+
+.linkedin-stats {
+    display: flex;
+    gap: 20px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.stat-item i {
+    color: #0077b5;
+}
+
+.linkedin-actions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.linkedin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 200px;
+    justify-content: center;
+}
+
+.linkedin-btn.primary {
+    background: linear-gradient(45deg, #0077b5, #00a0dc);
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.3);
+}
+
+.linkedin-btn.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 119, 181, 0.4);
+    background: linear-gradient(45deg, #00a0dc, #0077b5);
+}
+
+.linkedin-btn.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #0077b5;
+    border: 2px solid rgba(0, 119, 181, 0.5);
+}
+
+.linkedin-btn.secondary:hover {
+    background: rgba(0, 119, 181, 0.1);
+    border-color: rgba(0, 119, 181, 0.8);
+    transform: translateY(-2px);
+}
+
+
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 60px;
+    padding: 30px 0;
+    opacity: 0.7;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .name {
+        font-size: 2.5rem;
+    }
+    
+    .nav-tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .social-links {
+        grid-template-columns: 1fr;
+    }
+    
+    .social-link {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .social-link i {
+        margin-bottom: 10px;
+    }
+    
+    .playlists-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .playlist-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .playlist-info {
+        text-align: center;
+    }
+    
+    .linkedin-info {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .linkedin-stats {
+        justify-content: center;
+    }
+    
+    .linkedin-actions {
+        flex-direction: column;
+    }
+    
+    .linkedin-btn {
+        min-width: auto;
+    }
+    
+
+}
+
+/* Animações adicionais */
+.social-link, .tab-btn, .save-btn, .upload-btn, .download-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link::after, .tab-btn::after, .save-btn::after, .upload-btn::after, .download-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.social-link:active::after, .tab-btn:active::after, .save-btn:active::after, .upload-btn:active::after, .download-btn:active::after {
+    width: 300px;
+    height: 300px;
+}
